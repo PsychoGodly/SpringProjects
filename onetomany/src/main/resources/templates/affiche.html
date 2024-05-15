@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div th:each="crs : ${persons.courses}">
+        <p th:text="crs.course_name"></p>
+        <p th:text="crs.nbr_of_person"></p>
+    </div>
+</body>
+</html>

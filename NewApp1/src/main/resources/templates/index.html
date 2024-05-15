@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- Ajout de Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-8">
+<!-- navigation.html -->
+<nav class="bg-gray-800 text-white p-4 flex justify-between">
+    <div>
+        <a href="/Employees" class="mr-4 hover:text-gray-300">Home</a>
+        <a href="/ajoute_Emp" class="mr-4 hover:text-gray-300">Ajoute</a>
+    </div>
+    <a href="#" class="mr-4 hover:text-gray-300" th:text="${#authentication.name}"></a>
+
+    <a href="/login" class="hover:text-gray-300">Logout</a>
+</nav>
+
+
+<h2 class="text-2xl mb-4 py-4">Index Page</h2>
+
+<form action="/recherche" method="GET">
+    <label >Nom : </label>
+    <input class="border" type="text" name="nom" >
+    <button class="bg-blue-500 px-4 py-2 text-white">Chercher</button>
+</form>
+
+<table class="w-full border border-gray-300">
+    <thead>
+    <tr class="bg-gray-200">
+        <th class="px-4 py-2">Id</th>
+        <th class="px-4 py-2">Nom</th>
+        <th class="px-4 py-2">Prénom</th>
+        <th class="px-4 py-2">Age</th>
+        <th  class="px-4 py-2">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="emp : ${employees}" class="border-t border-gray-300 text-center">
+        <td class="px-4 py-2" th:text="${emp.id}"></td>
+        <td class="px-4 py-2" th:text="${emp.nom}"></td>
+        <td class="px-4 py-2" th:text="${emp.prenom}"></td>
+        <td class="px-4 py-2" th:text="${emp.age}"></td>
+        <td class="px-4 py-2">
+            <a onclick="return confirm('SURE !')" th:href="@{supprimer(id=${emp.id})}" class="text-white bg-red-500 hover:bg-red-600 px-4 py-2">Supprimer</a>
+            <a th:href="@{modifier(id=${emp.id})}"  class="text-white bg-yellow-500 hover:bg-yellow-600 px-4 py-2"> Modifier</a>
+        </td>
+
+
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

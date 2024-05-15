@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifier</title>
+    <!-- Ajout de Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-8">
+<nav class="bg-gray-800 text-white p-4 flex justify-between">
+    <div>
+        <a href="/Employees" class="mr-4 hover:text-gray-300">Home</a>
+        <a href="/ajoute_Emp" class="mr-4 hover:text-gray-300">Ajoute</a>
+    </div>
+    <a href="/login" class="hover:text-gray-300">Logout</a>
+</nav>
+<h1>Modifier Emp</h1>
+<form class="max-w-sm mx-auto" th:object="${empM}" action="/modifier" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <div class="mb-4">
+        <label class="block mb-2">Nom :</label>
+        <input type="text" th:field="*{nom}" class="border border-gray-300 px-4 py-2 rounded-md w-full">
+    </div>
+    <div class="mb-4">
+        <label class="block mb-2">Prénom :</label>
+        <input type="text" th:field="*{prenom}" class="border border-gray-300 px-4 py-2 rounded-md w-full">
+    </div>
+    <div class="mb-4">
+        <label class="block mb-2">Age :</label>
+        <input type="text" th:field="*{age}" class="border border-gray-300 px-4 py-2 rounded-md w-full">
+    </div>
+    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md">Modifier Emp</button>
+</form>
+</body>
+</html>

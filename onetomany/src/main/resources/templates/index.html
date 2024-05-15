@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <!-- Lien vers la feuille de style Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+<div class="container mx-auto">
+    <h1 class="text-3xl text-red font-bold text-center mt-8">Index</h1>
+
+    <div th:each="person : ${persons}" class="mt-4 border w-64 border-black">
+        <h2 class="text-xl font-semibold mt-4 text-blue-800">Person Details</h2>
+        <!-- Affichage du nom et de l'âge de la personne -->
+        <p th:text="${person.name + ' - ' + person.age}" class="text-lg"></p>
+
+        <!-- Utilisation de th:each pour parcourir la liste des commandes de la personne -->
+        <h3 class="text-lg font-semibold mt-2">Commands</h3>
+        <ul class="list-disc pl-4">
+            <li th:each="command : ${person.commands}" th:text="${command.command + ' ' + command.quantity}" class="text-base"></li>
+        </ul>
+    </div>
+
+    <br><br><br><br><br><br>
+    <div th:each="person : ${persons}">
+        <p th:text="${person.name}"></p>
+        <p th:text="${person.age}"></p>
+        <ul>
+            <li th:each="course : ${person.courses}">
+                <span th:text="${course.course_name}"></span> - <span th:text="${course.nbr_of_person}"></span>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <!-- Ajout de Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex justify-center items-center h-screen">
+<div class="bg-white p-8 rounded shadow-md">
+    <!-- Affichage du message d'erreur -->
+    <p th:text="${message}" th:if="${message}" class="text-red-500 mb-4"></p>
+
+    <!-- Formulaire de connexion -->
+    <form method="POST" action="/login">
+        <div class="mb-4">
+            <label for="username" class="block mb-2">Username:</label>
+            <input type="text" id="username" name="username" class="border border-gray-300 px-4 py-2 rounded-md w-full">
+        </div>
+        <div class="mb-4">
+            <label for="password" class="block mb-2">Password:</label>
+            <input type="password" id="password" name="password" class="border border-gray-300 px-4 py-2 rounded-md w-full">
+        </div>
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md">Login</button>
+    </form>
+</div>
+</body>
+</html>
